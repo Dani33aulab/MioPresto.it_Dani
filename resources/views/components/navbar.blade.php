@@ -7,15 +7,33 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('announcements.create')}}">Nuovo Annuncio</a>
+            <a class="nav-link active" aria-current="page" href="{{route('announcements.index')}}">Annunci</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                  Categorie
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                @foreach ($categories as $category)
+                      <li> <a class="dropdown-item" href="{{route('categoryShow', compact('category'))}}">{{($category->name)}}</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                @endforeach
+              </ul>
+
+
           </li>
 
           @guest
+          
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{route('announcements.create')}}">Nuovo Annuncio</a>
+          </li>
           <li class="nv-tem">
+            
                 <a class="nav-link" href="{{route('register')}}">Registrati</a>
           </li>
 

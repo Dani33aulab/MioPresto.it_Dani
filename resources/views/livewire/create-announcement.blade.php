@@ -1,3 +1,4 @@
+
 <div>
     <h1>Crea il Tuo aanuncio!</h1>
 
@@ -5,6 +6,8 @@
         <div class="flex flex-row justify-content-center my-2 alert alert-success">
             {{session('message')}}
         </div>
+
+        @endif
 
     <form wire:submit.prevent="store">
         @csrf 

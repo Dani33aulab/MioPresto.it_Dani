@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PublicController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\AnnouncementController;
 
 /*
@@ -15,7 +15,16 @@ use App\Http\Controllers\AnnouncementController;
 |
 */
 
-Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
+Route::get('/', [FrontController::class, 'welcome'])->name('welcome');
 
-Route::get('/nuovo/annuncio', [AnnouncementController::class, 'createAnnouncement'])->name('announcements.create');
+Route::get('/categoria/{category}', [FrontController::class, 'categoryShow'])->name('categoryShow');
+
+
+
+Route::get('/nuovo/annuncio', [AnnouncementController::class, 'createAnnouncement'])->middleware('auth')->name('announcements.create');
+
+Route::get('/dettaglio/annuncio/{announcement}', [AnnouncementController::class, 'showAnnouncement'])->name('announcements.show');
+
+
+Route::get('/tutti/annunci', [AnnouncementController::class, 'indexAnnouncement'])->name('announcements.index');
 
