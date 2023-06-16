@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller
@@ -18,7 +19,7 @@ class AnnouncementController extends Controller
 
     public function indexAnnouncement(){
 
-        $announcements = Announcement::all();
+        $announcements = Announcement::paginate(10);
         return view('announcements.index', compact('announcements'));
     }
 }

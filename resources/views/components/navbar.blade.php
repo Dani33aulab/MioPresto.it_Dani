@@ -32,8 +32,15 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{route('announcements.create')}}">Nuovo Annuncio</a>
           </li>
+          @if (Auth::user()->is_revisor)
+              <li class="nav-item">
+                  <a class="nav-link btn btn-outline-success btn-sm position-relative" aria-current="page" href="{{route('revisor.index')}}"> Zona revisore
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                  {{App\Models\Announcement::tobeRevisionedCount()}}
+                  <span class="visually-hidden">unread messages</span>
+                  </a>
+              </li>
           <li class="nv-tem">
-            
                 <a class="nav-link" href="{{route('register')}}">Registrati</a>
           </li>
 
